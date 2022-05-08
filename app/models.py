@@ -1,24 +1,9 @@
-class NewsSource:
-     
-    '''
-    NewsSource class to define news Objects
-    '''
+from . import db
 
-    def __init__(self,name,description,url,category,langauge,country):
-        self.name = name
-        self.description = description
-        self.url = url
-        self.category = category
-        self.langauge = langauge
-        self.country = country
+class User(db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer,primary_key = True)
+    username = db.Column(db.String(255))
 
-class Article:
-    def __init__(self,title,name, author,description, url, image, date):
-        self.title = title
-        self.name = name
-        self.author = author 
-        self.description = description
-        self.url = url
-        self.image = image 
-        self.date = date
-        # self.intro = intro
+    def __repr__(self):
+        return f'User {self.username}'
