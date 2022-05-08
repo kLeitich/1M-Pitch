@@ -14,7 +14,7 @@ def index():
     title = 'Home'
     return render_template('index.html', title = title, sources = news_sources )
 
-@main.route('/trending')
+@main.route('/register')
 def trending():
 
     '''
@@ -22,8 +22,8 @@ def trending():
     '''
     top_article=get_articles()
     
-    return render_template('trending.html',articles= top_article)
-@main.route('/source')
+    return render_template('register.html',articles= top_article)
+@main.route('/login')
 def source():
 
     '''
@@ -32,8 +32,8 @@ def source():
     news_sources = get_news()
     print(news_sources)
     title = 'Home'
-    return render_template('source.html', title = title, sources = news_sources )
-@main.route('/article')
+    return render_template('login.html', title = title, sources = news_sources )
+@main.route('/profile')
 def article():
 
     '''
@@ -41,4 +41,4 @@ def article():
     '''
     top_article=get_articles()
     print(top_article)
-    return render_template('article.html',articles= top_article)
+    return render_template('profile.html',articles= top_article)
