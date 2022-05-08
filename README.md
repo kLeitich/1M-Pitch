@@ -1,4 +1,4 @@
-# NEWS HIGHLIGHTS
+# 1M-Pitch
 #### By Kevin Leitich, May 4, 2022
 ### This is an application for checking out news articles from various news sources across the globe.
 
@@ -22,7 +22,7 @@ To get the code..
 
 1. Cloning the repository:
   ```bash
-  git clone https://github.com/kLeitich/News-Highlights.git
+  git clone https://github.com/kLeitich/1M-Pitch.git
   ```
 2. Move to the folder and install requirements
   ```bash
@@ -42,7 +42,7 @@ To get the code..
   ```
 5. Testing the application
   ```bash
-  python3.8 run.py test
+  python3 run.py test
   ```
 Open the application on your browser `127.0.0.1:5000`.
 
