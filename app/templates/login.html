@@ -7,21 +7,7 @@
     </head>
     <body>
     {% block content %}
-        <div class="container">
-            <h2>Top Articles In Africa</h2>
-            <div class="row" >{% for article in articles %}
-                <div class="col-md-3 text-center">
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{article.url}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">{{article.title}}</h5>
-                          <p class="card-text">{{article.date}}</p>
-                          <a href="{{article.description}}" class="btn btn-primary">Go to article</a>
-                        </div>
-                      </div>
-                </div>{% endfor %}
-            </div >
-        </div>
+        <h1>Login</h1>
     {% endblock %}
     </body>
 </html>
