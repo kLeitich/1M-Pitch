@@ -9,36 +9,31 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    news_sources = get_news()
-   
-    title = 'Home'
-    return render_template('index.html', title = title, sources = news_sources )
+    
+    return render_template('index.html' )
 
 @main.route('/register')
-def trending():
+def register():
 
     '''
     View root page function that returns the index page and its data
     '''
-    top_article=get_articles()
+   
     
-    return render_template('register.html',articles= top_article)
+    return render_template('register.html')
 @main.route('/login')
-def source():
+def login():
 
     '''
     View root page function that returns the index page and its data
     '''
-    news_sources = get_news()
-    print(news_sources)
-    title = 'Home'
-    return render_template('login.html', title = title, sources = news_sources )
+    
+    return render_template('login.html')
 @main.route('/profile')
-def article():
+def profile():
 
     '''
     View root page function that returns the index page and its data
     '''
-    top_article=get_articles()
-    print(top_article)
-    return render_template('profile.html',articles= top_article)
+
+    return render_template('profile.html')
