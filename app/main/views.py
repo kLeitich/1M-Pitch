@@ -22,19 +22,3 @@ def profle():
    
     
     return render_template('profile.html')
-@main.route('/login')
-def login():
-
-    '''
-    View root page function that returns the index page and its data
-    '''
-    
-    return render_template('login.html')
-@main.route('/register')
-def article():
-
-    '''
-    View root page function that returns the index page and its data
-    '''
-   
-    return render_template('register.html')
