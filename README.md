@@ -1,6 +1,6 @@
 # 1M-Pitch
 #### By Kevin Leitich, May 4, 2022
-### This is an application for checking out news articles from various news sources across the globe.
+### This is an application for one minute Pitches.
 
 ## Table of Contents
 + [Description](#description)
@@ -10,7 +10,7 @@
 + [Authors Info](#author)
 
 ## Description
-This is an application in which a user can view various news sources and read news articles published from those news sources. The user can as well click on a link to read news from those articles.
+This is an application in which a user can be autheticated loggined in and create a pitch,vote on a pitch,create a comment or view comments created and stored in the database.
 
 ## Installation 
 ### Requirements
@@ -26,12 +26,13 @@ To get the code..
   ```
 2. Move to the folder and install requirements
   ```bash
-  cd news-highlights
+  cd 1M-Pitch
   pip install -r requirements.txt
   ```
 3. Exporting Configurations
   ```bash
-  export API_KEY='{Enter your News Api Key}'
+  export MAIL_USERNAME=<your email>
+  export MAIL_PASSWORD=<Your email password>
   ```
 4. Running the application
 
@@ -47,7 +48,7 @@ To get the code..
 Open the application on your browser `127.0.0.1:5000`.
 
 
-[Go Back to the top](#News App)
+[Go Back to the top](#1M-Pitch)
 
 
 ## Technology Used
