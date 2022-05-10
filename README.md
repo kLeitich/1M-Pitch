@@ -56,7 +56,7 @@ Open the application on your browser `127.0.0.1:5000`.
 * [Flask](http://flask.pocoo.org/)
 * [Heroku](https://heroku.com)
 
-[Go Back to the top](#News Highlights)
+[Go Back to the top](#1M-Pitch)
 
 ## Known Bugs
 No known bugs.
