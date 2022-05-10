@@ -7,8 +7,9 @@
     </head>
     <body>
     {% block content %}
-        <h1>Profile</h1>
+        
         <div class="container">
+          <h1>Profile</h1>
             <div class="row">
             <!-- displaying  Username-->
               <div class="col-md-4">
@@ -16,7 +17,7 @@
             
                 <!--Displaying user bio-->
                 {% if user.bio %}
-                  <p> BIO: {{user.bio}}</p>
+                  <p> <strong>BIO:</strong> {{user.bio}}</p>
                 {%else%}
                   <p>USERNAME: {{user.username| capitalize}} has no bio </p>
                 {% endif %}
