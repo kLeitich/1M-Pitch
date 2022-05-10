@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,SubmitField,ValidationError,BooleanField,TextAreaField
+from wtforms import StringField,PasswordField,SubmitField,ValidationError,BooleanField,TextAreaField,SelectField
 from wtforms.validators import DataRequired,Email,EqualTo
 from ..models import User
 
@@ -26,4 +26,10 @@ class LoginForm(FlaskForm):
 
 class UpdateProfile(FlaskForm):
     bio = TextAreaField('Tell us about you.',validators = [DataRequired()])
+    submit = SubmitField('Submit')
+
+
+class NewPitch(FlaskForm):
+    category = SelectField(u'Categories', choices=[('Interview pitch','Interview pitch'), ('Product pitch','Product pitch'), ('Sales pitch','Sales pitch'), ('Promotion pitch','Promotion pitch')])
+    pitch = TextAreaField('Tell us you pitch.',validators = [DataRequired()])
     submit = SubmitField('Submit')

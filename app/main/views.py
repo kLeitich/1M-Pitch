@@ -1,8 +1,8 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from ..models import User,Role
+from ..models import User,Role,Pitch
 from flask_login import login_required
-from .forms import UpdateProfile
+from .forms import NewPitch, UpdateProfile
 from .. import db,photos
 
 @main.route('/')
@@ -57,3 +57,26 @@ def update_pic(uname):
         user.profile_pic_path = path
         db.session.commit()
     return redirect(url_for('main.profile',uname=uname))
+
+
+@main.route('/pitch/<uname>/update',methods = ['GET','POST'])
+@login_required
+def new_pitch(uname):
+    user = User.query.filter_by(username = uname).first()
+    if user is None:
+        abort(404)
+
+    form = NewPitch()
+
+    if form.validate_on_submit():
+        category = form.category.data
+        pitch = form.pitch.data
+        new_pitch = Pitch(category=category,pitch=pitch)
+        
+        new_pitch.save_pitch()
+        return redirect(url_for('main.index'))
+    # else:
+    #     all_pitches = Pitch.query.order_by(Pitch.posted).all
+
+   
+    return render_template('pitch.html',form =form)

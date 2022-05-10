@@ -50,3 +50,22 @@ class Role(db.Model):
     def __repr__(self):
         return f'User {self.name}'
 
+class Pitch(db.Model):
+
+    __tablename__ = 'pitches'
+
+    id = db.Column(db.Integer,primary_key=True)
+    category = db.Column(db.String)
+    pitch = db.Column(db.String)
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    # upvote = db.relationship('Upvote',backref='post',lazy='dynamic')
+    # downvote = db.relationship('Downvote',backref='post',lazy='dynamic')
+    # comment = db.relationship('Comment',backref='post',lazy='dynamic')
+
+    def save_pitch(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def _repr_(self):
+        return f'Pitch{self.category}'
