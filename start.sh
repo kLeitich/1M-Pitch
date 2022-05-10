@@ -1,3 +1,3 @@
-export MAIL_USERNAME=<Your Email Address>
-export MAIL_PASSWORD=<Your Email Password>
+export MAIL_USERNAME="kevokaksz@gmail.com"
+export MAIL_PASSWORD="moringaproject2"
 python3.6 manage.py runserver
