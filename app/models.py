@@ -70,23 +70,37 @@ class Pitch(db.Model):
         return f'Pitch{self.category}'
 
 
-# class Comment(db.model):
+class Comment(db.Model):
 
-#     __tablename__= "comments"
+    __tablename__= "comments"
 
-#     id = db.Column(db.Integer,primary_key=True)
-#     comment = db.Column(db.String)
-#     posted = db.Column(db.DateTime,default=datetime.utcnow)
+    id = db.Column(db.Integer,primary_key=True)
+    comment = db.Column(db.String)
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+
+    def _repr_(self):
+        return f'Pitch{self.comment}'
+
+
+# class Voteup(db.Model):
+
+#     __table__='likes'
+
+#     id = db.Column(db.Integer, primary_key=True)
 #     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+#     pitch_id = db.Column(db.Integer, db.ForeignKey('pitchs.id'))
 
-#     def save_comment(self):
+    
+#     def save_like(self):
 #         db.session.add(self)
 #         db.session.commit()
 
 #     def _repr_(self):
-#         return f'Pitch{self.comment}'
-
-    
-
+#         return f'Pitch{self.pitch_id,self.user_id}'
 
 

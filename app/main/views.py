@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
 from ..models import User,Role,Pitch
-from flask_login import login_required
+from flask_login import current_user, login_required
 from .forms import  NewComment, UpdateProfile,NewPitch
 from .. import db,photos
 
@@ -75,8 +75,7 @@ def new_pitch(uname):
         
         new_pitch.save_pitch()
         return redirect(url_for('main.new_pitch',uname=user.username))
-    # else:
-    #     all_pitches = Pitch.query.order_by(Pitch.posted).all
+    
 
    
     return render_template('pitch.html',form =form)
@@ -138,3 +137,20 @@ def sales():
     '''
     
     return render_template('category/sales.html')
+
+
+@main.route('/thumbup/<int:id>', methods=['GET', 'POST'])
+@login_required
+def thumbup(id):
+    pitch = Pitch.query.get(id)
+    if pitch is None:
+        abort(404)
+    thumbup = Voteup.query.filter_by(user_id=current_user.id, pitch_id=id).first()
+    if thumbup is not None:
+        db.session.delete(thumbup)
+        db.session.commit()
+        return redirect(url_for('main.index'))
+    new_thumbup = Voteup(user_id=current_user.id,pitch_id=id)
+    db.session.add(new_thumbup)
+    db.session.commit()
+    return redirect(url_for('main.index'))
