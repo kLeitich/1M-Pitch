@@ -33,3 +33,7 @@ class NewPitch(FlaskForm):
     category = SelectField(u'Categories', choices=[('Interview pitch','Interview pitch'), ('Product pitch','Product pitch'), ('Sales pitch','Sales pitch'), ('Promotion pitch','Promotion pitch')])
     pitchContent = TextAreaField('Tell us you pitch.',validators = [DataRequired()])
     submit = SubmitField('Submit')
+
+class NewComment(FlaskForm):
+    commentNew = TextAreaField('Please Add a Comment',validators = [DataRequired()])
+    submit = SubmitField('Submit')

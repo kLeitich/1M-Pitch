@@ -1,3 +1,4 @@
+
 from . import db
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
@@ -19,7 +20,7 @@ class User(UserMixin,db.Model):
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
     pass_secure = db.Column(db.String(255))
-    pitch = db.relationship('Pitch',backref = 'users',lazy="dynamic")
+    pitchs = db.relationship('Pitch',backref = 'users',lazy="dynamic")
 
     def __repr__(self):
         return f'User {self.username}'
@@ -52,7 +53,7 @@ class Role(db.Model):
 
 class Pitch(db.Model):
 
-    __tablename__ = 'pitch'
+    __tablename__ = 'pitchs'
 
     id = db.Column(db.Integer,primary_key=True)
     category = db.Column(db.String)
@@ -67,6 +68,25 @@ class Pitch(db.Model):
 
     def _repr_(self):
         return f'Pitch{self.category}'
+
+
+# class Comment(db.model):
+
+#     __tablename__= "comments"
+
+#     id = db.Column(db.Integer,primary_key=True)
+#     comment = db.Column(db.String)
+#     posted = db.Column(db.DateTime,default=datetime.utcnow)
+#     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+#     def save_comment(self):
+#         db.session.add(self)
+#         db.session.commit()
+
+#     def _repr_(self):
+#         return f'Pitch{self.comment}'
+
+    
 
 
 
