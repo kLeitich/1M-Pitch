@@ -18,8 +18,8 @@ class User(UserMixin,db.Model):
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
-    # comments = db.relationship('Comment',backref = 'user',lazy = "dynamic")
     pass_secure = db.Column(db.String(255))
+    pitch = db.relationship('Pitch',backref = 'users',lazy="dynamic")
 
     def __repr__(self):
         return f'User {self.username}'
@@ -52,16 +52,14 @@ class Role(db.Model):
 
 class Pitch(db.Model):
 
-    __tablename__ = 'pitches'
+    __tablename__ = 'pitch'
 
     id = db.Column(db.Integer,primary_key=True)
     category = db.Column(db.String)
-    pitch = db.Column(db.String)
+    pitchContent = db.Column(db.String)
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    # upvote = db.relationship('Upvote',backref='post',lazy='dynamic')
-    # downvote = db.relationship('Downvote',backref='post',lazy='dynamic')
-    # comment = db.relationship('Comment',backref='post',lazy='dynamic')
+    
 
     def save_pitch(self):
         db.session.add(self)
@@ -69,3 +67,6 @@ class Pitch(db.Model):
 
     def _repr_(self):
         return f'Pitch{self.category}'
+
+
+

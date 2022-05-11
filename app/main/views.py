@@ -2,7 +2,7 @@ from flask import render_template,request,redirect,url_for,abort
 from . import main
 from ..models import User,Role,Pitch
 from flask_login import login_required
-from .forms import NewPitch, UpdateProfile
+from .forms import  UpdateProfile,NewPitch
 from .. import db,photos
 
 @main.route('/')
@@ -70,11 +70,11 @@ def new_pitch(uname):
 
     if form.validate_on_submit():
         category = form.category.data
-        pitch = form.pitch.data
-        new_pitch = Pitch(category=category,pitch=pitch)
+        pitchContent = form.pitchContent.data
+        new_pitch = Pitch(category=category,pitchContent=pitchContent)
         
         new_pitch.save_pitch()
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.new_pitch',uname=user.username))
     # else:
     #     all_pitches = Pitch.query.order_by(Pitch.posted).all
 

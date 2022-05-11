@@ -19,7 +19,8 @@
                         <a href=""><li>Sales Pitch</li></a>
                         <a href=""><li>Promotion Pitch</li></a>
                     </ul>
-                    <button type="button" class="btn btn-outline-primary"><a href="{{url_for('main.new_pitch')}}"></a>Add Pitch</button>
+                    
+                    <button type="button" class="btn btn-outline-primary"> <a href="{{url_for('main.new_pitch',uname=current_user.username)}}">Add Pitch</a></button>
                 </div>
                 <div class="col-md-8">
                     <h3>Business Pitch</h3><hr>
