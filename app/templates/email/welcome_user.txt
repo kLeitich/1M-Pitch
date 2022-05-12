@@ -1,0 +1,6 @@
+Hello {{user.username}}
+Welcome to 1M-Pitch
+
+Thank you for signing up for 1M-Pitch.
+
+You can now vote and add one minute pitches in several catergories available.

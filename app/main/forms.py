@@ -1,0 +1,41 @@
+from flask_wtf import FlaskForm
+from wtforms import StringField,PasswordField,SubmitField,ValidationError,BooleanField,TextAreaField,SelectField
+from wtforms.validators import DataRequired,Email,EqualTo
+from ..models import User
+
+class RegistrationForm(FlaskForm):
+    email = StringField('Your Email Address',validators=[DataRequired(),Email()])
+    username = StringField('Enter your username',validators = [DataRequired()])
+    password = PasswordField('Password',validators = [DataRequired(), EqualTo('password_confirm',message = 'Passwords must match')])
+    password_confirm = PasswordField('Confirm Passwords',validators = [DataRequired()])
+    submit = SubmitField('Sign Up')
+
+    def validate_email(self,data_field):
+            if User.query.filter_by(email =data_field.data).first():
+                raise ValidationError('There is an account with that email')
+
+    def validate_username(self,data_field):
+        if User.query.filter_by(username = data_field.data).first():
+            raise ValidationError('That username is taken')
+
+class LoginForm(FlaskForm):
+    email = StringField('Your Email Address',validators=[DataRequired(),Email()])
+    password = PasswordField('Password',validators =[DataRequired()])
+    remember = BooleanField('Remember me')
+    submit = SubmitField('Sign In')
+
+class UpdateProfile(FlaskForm):
+    bio = TextAreaField('Tell us about you.',validators = [DataRequired()])
+    submit = SubmitField('Submit')
+
+
+class NewPitch(FlaskForm):
+    category = SelectField(u'Categories', choices=[('Interview pitch','Interview pitch'), ('Product pitch','Product pitch'), ('Sales pitch','Sales pitch'), ('Promotion pitch','Promotion pitch')])
+    pitchContent = TextAreaField('Tell us you pitch.',validators = [DataRequired()])
+    pitchAuthor = StringField('Enter you name',validators=[DataRequired()])
+    submit = SubmitField('Submit')
+
+class NewComment(FlaskForm):
+    commentNew = TextAreaField('Please Add a Comment',validators = [DataRequired()])
+    comment_author=StringField('Enter you name',validators=[DataRequired()])
+    submit = SubmitField('Submit')
