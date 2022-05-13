@@ -66,7 +66,7 @@ No known bugs.
 
 copyright (c) 2022 MIT License. [View License Here](LICENSE)
 
-[Go Back to the top](#News App)
+[Go Back to the top](# 1M-Pitch)
 
 ## Authors Info
 
